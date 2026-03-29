@@ -1,2 +1,3 @@
 # Sistemi-operativi
-Eserciz
+Raccolta esercizi svolti su c e bash
+
