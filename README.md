@@ -22,16 +22,6 @@ Per provare che tutto funzioni correttamente, apri il terminale, assicurati di e
   bash .\file.sh
   ```
 
-  Se invece sei gia nel terminale **Bash/WSL**, non usare `bash .\file.sh` (sintassi PowerShell):
-  ```bash
-  ./file.sh
-  ```
-
-  Se usi WSL, puoi anche usare:
-  ```powershell
-  wsl bash ./file.sh
-  ```
-
 ### Esercizi vari
 
 * **Esercizi 03_12_2025**

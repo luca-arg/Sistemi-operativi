@@ -27,7 +27,7 @@
 
 
 # Definisco la cartella trash nella Home (creandola se non esiste)
-TRASH_DIR="$./trash" #ci andrebbe anche $HOME/.trash/ ma non è necessario, io voglio che sia nella cartella corrente per comodità
+TRASH_DIR="./trash" #ci andrebbe anche $HOME/.trash/ ma non è necessario, io voglio che sia nella cartella corrente per comodità
 
 #if [ ! -d "$TRASH_DIR" ]; then
 #    mkdir "$TRASH_DIR"
@@ -68,7 +68,7 @@ case "$1" in
         # Controllo se il file esiste nel cestino prima di spostarlo
         if [ -f "$TRASH_DIR/$FILE_RIPRISTINO" ]; then #controllo se il file da ripristinare esiste nel cestino con -f (per file regolari) e "$TRASH_DIR/$FILE_RIPRISTINO" per specificare il percorso completo
             mv "$TRASH_DIR/$FILE_RIPRISTINO" "$RIPRISTINATE/"
-            echo "File $FILE_RIPRISTINO ripristinato nella cartella corrente."
+            echo "File $FILE_RIPRISTINO ripristinato nella cartella ripristinati."
         else
             echo "Errore: $FILE_RIPRISTINO non trovato nel cestino."
         fi
@@ -99,7 +99,7 @@ case "$1" in
                 mv "$TRASH_DIR/$NOME_FILE" "$TRASH_DIR/${NOME_FILE}.${TIMESTAMP}"
             fi
             
-            # Sposto il nuovo file nel cestino
+            # Sposto il file nel cestino
             mv "$FILE" "$TRASH_DIR/"
             echo "File $FILE spostato nel cestino."
         done
