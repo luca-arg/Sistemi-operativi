@@ -137,10 +137,95 @@ Approfondimento sull'uso del comando `test` (sintassi `[]`) per il confronto tra
 ---
 
 
+---
 
+## PYTHON (Moduli di Sistema)
+
+### Come testare i codici
+
+Per provare che tutto funzioni correttamente, apri il terminale, assicurati di essere nella cartella dove hai i file e segui questi passaggi:
+
+1.  **Salva lo script** con estensione `.py`.
+2.  Assicurati di avere Python 3 installato sul tuo sistema.
+3.  Avvia lo script digitando:
+    ```bash
+    python3 nome_file.py [argomenti]
+    ```
+    *(In alternativa, su Windows o ambienti configurati diversamente, potrebbe bastare il comando `python nome_file.py`).*
+4.  Per visualizzare l'help interattivo e i parametri accettati dallo script (generato in automatico tramite `argparse`), usa:
+    ```bash
+    python3 nome_file.py -h
+    ```
 
 ---
 
+### Esercizi Pratici (Esami)
+
+Di seguito la descrizione dello script realizzato utilizzando i moduli standard di Python per l'interazione con il sistema operativo:
+
+#### 1. Ricerca e Raggruppamento Link Simbolici (`Es3.py`)
+Script che analizza ricorsivamente un sottoalbero di directory e raggruppa i link simbolici che fanno riferimento allo stesso file reale.
+
+* **Moduli utilizzati**: 
+    * `os`: Navigazione del file system (`os.walk`), controllo della natura dei file (`os.path.islink`) e risoluzione dei percorsi (`os.path.realpath`).
+    * `sys`: Gestione degli errori fatali ed exit code specifici (`sys.stderr`, `sys.exit`).
+    * `argparse`: Creazione di un'interfaccia a riga di comando robusta e auto-documentata.
+    * `collections`: Uso di `defaultdict` per semplificare la logica di inserimento in dizionario.
+* **Logica**:
+    * Sfrutta `os.walk` per scansionare sia file che cartelle.
+    * Risolve il percorso reale (gestendo link relativi, assoluti e a cascata) restituendo un path canonico assoluto.
+    * Raggruppa i link in un dizionario usando il target reale come chiave.
+* **Filtro**: Mostra a video solo i file fisici a cui puntano *almeno due* link simbolici distinti, ignorando i link orfani o univoci.
+
+### Come testare lo script `Es3.py`
+
+Per verificare il corretto funzionamento, è necessario ricreare una struttura di file e link (sia assoluti che relativi) all'interno di una cartella temporanea (es. `/tmp/test`).
+
+**1. Creazione della struttura e dei file reali**
+Crea la directory principale e una sottocartella, poi aggiungi due file reali vuoti:
+```bash
+mkdir -p /tmp/test/d
+touch /tmp/test/file1
+touch /tmp/test/file2
+```
+
+### 2. Creazione dei link simbolici
+Spostati nella cartella principale e crea i link (simulando percorsi relativi e assoluti):
+```bash
+cd /tmp/test
+ln -s file1 sl1
+ln -s file1 sl1bis
+ln -s file2 sl2
+ln -s /tmp/test/file1 d/gsl1
+ln -s ../file1 d/sl1
+```
+
+### 3. Esecuzione dello script
+Spostati nella cartella dove hai salvato Es3.py e avvialo passando la cartella di test come parametro:
+```bash
+python3 Es3.py /tmp/test
+```
+
+### 4. Risultato atteso
+Lo script ignorerà sl2 (poiché è l'unico link a puntare a file2) e raggrupperà correttamente tutti gli altri sotto file1:
+```bash
+File di destinazione (risolto): /tmp/test/file1
+  -> /tmp/test/sl1
+  -> /tmp/test/sl1bis
+  -> /tmp/test/d/gsl1
+  -> /tmp/test/d/sl1
+--------------------------------------------------
+```
+
+### 5. Pulizia (Opzionale)
+Terminato il test, rimuovi la cartella temporanea dal file system per fare pulizia:
+```bash
+rm -r /tmp/test
+```
+
+
+
+---
 ## C
 
 ### Come compilare ed eseguire i codici
@@ -163,4 +248,4 @@ Per i file scritti in linguaggio C, è necessario trasformare il codice sorgente
         ```powershell
         .\nome_file.exe
         ```
-
+---
