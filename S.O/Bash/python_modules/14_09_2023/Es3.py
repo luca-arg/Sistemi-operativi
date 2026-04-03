@@ -22,7 +22,7 @@ import sys
 import argparse
 from collections import defaultdict
 
-def trova_link_similari(directory):
+def trova_link_similari(directory):# quello che gli passo in input è la directory da scansionare 
     """
     Scansiona la directory e raggruppa i link simbolici che puntano allo stesso file.
     """
@@ -30,12 +30,12 @@ def trova_link_similari(directory):
     mappa_link = defaultdict(list)
     
     # os.walk scansiona tutto l'albero delle directory in modo efficiente
-    for root, dirs, files in os.walk(directory):
+    for root, dirs, files in os.walk(directory):# root è la directory corrente, dirs è la lista delle sottodirectory, files è la lista dei file in quella directory
         # Uniamo file e cartelle, poiché anche le cartelle possono essere linkate
         for name in files + dirs:
-            full_path = os.path.join(root, name)
-            
-            # Controlliamo se l'elemento è effettivamente un symlink
+            full_path = os.path.join(root, name)# otteniamo il percorso completo dell'elemento (file o cartella) con join che serve per unire i percorsi in modo corretto, indipendentemente dal sistema operativo
+
+            # Controlliamo se l'elemento è effettivamente un symlink utilizzando os.path.islink, che restituisce True se il percorso è un link simbolico
             if os.path.islink(full_path):
                 try:
                     # os.path.realpath risolve tutti i symlink (anche a cascata) 
@@ -61,6 +61,9 @@ def trova_link_similari(directory):
             
     if not trovati:
         print("Nessun gruppo di link simbolici che puntano allo stesso file è stato trovato.")
+
+
+
 
 
 if __name__ == "__main__":

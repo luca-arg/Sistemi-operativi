@@ -161,6 +161,7 @@ Per provare che tutto funzioni correttamente, apri il terminale, assicurati di e
 
 ### Esercizi Pratici (Esami)
 
+## VERSIONE PYTHON
 Di seguito la descrizione dello script realizzato utilizzando i moduli standard di Python per l'interazione con il sistema operativo:
 
 #### 1. Ricerca e Raggruppamento Link Simbolici (`Es3.py`)
@@ -222,9 +223,21 @@ Terminato il test, rimuovi la cartella temporanea dal file system per fare puliz
 ```bash
 rm -r /tmp/test
 ```
+---
+## VERSIONE BASH
+### Punti 1 e 2 come prima
 
+### 3. Rendere eseguibile ed eseguire lo script
+Torna nella cartella dove hai salvato lo script, dagli i permessi di esecuzione e avvialo:
 
+```bash
+chmod +x Es3.sh
+./Es3.sh /tmp/test
+```
 
+### Punti 4 e 5 come prima
+
+---
 ---
 ## C
 
