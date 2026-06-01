@@ -9,19 +9,19 @@ o aggiungi, direttive di packing (#pragma pack) e confronta di nuovo le
 dimensioni.*/
 
 #pragma pack(1)
-struct Data1 {
+struct Data1
+{
+
     char a;
     int b;
     short c;
-}Data1;
+} Data1;
 
 struct Data2 {
     char a;
     short c;
     int b;
-}Data2;
-#pragma pack(0)
-    
+} Data2;
 
 int main(){
     printf("Size of Data1: %zu\n", sizeof(Data1));

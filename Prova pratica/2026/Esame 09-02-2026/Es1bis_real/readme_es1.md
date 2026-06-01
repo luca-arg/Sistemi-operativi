@@ -1,8 +1,8 @@
 # Esercizi Laboratorio Sistemi Operativi - IPC tramite Segnali
 
-Questo progetto contiene la soluzione alla prova pratica di laboratorio del 09 febbraio 2026. I programmi dimostrano la comunicazione tra processi (IPC) su architetture a 64 bit, sfruttando il payload dei segnali (`sigqueue`) per trasmettere stringhe fino a 8 caratteri.
+Questo progetto contiene la soluzione all' es 1 
+prova pratica di laboratorio del 09 febbraio 2026. I programmi dimostrano la comunicazione tra processi (IPC) su architetture a 64 bit, sfruttando il payload dei segnali (`sigqueue`) per trasmettere stringhe fino a 8 caratteri.
 
-Come standard per le interazioni e le sincronizzazioni di questo progetto, utilizziamo esclusivamente il modello signal urgent per i monitor.
 
 ## File Inclusi
 * `sigrx.c`: Il processo ricevitore. Attende segnali `SIGUSR1` in modo asincrono ed estrae i dati fisicamente scritti nei 64 bit del puntatore del payload.

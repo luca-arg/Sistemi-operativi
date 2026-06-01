@@ -25,7 +25,9 @@ int main() {
     printf("After assigning to i:\n");
     printf("i: %d\n", (unsigned)n.i);
 
-    printf("f: %d\n", (unsigned)n.f);
+    printf("f: %d\n", (unsigned)n.f); // La rappresentazione in memoria di 0x01020304 come float è un numero molto piccolo, quindi quando si interpreta i byte di n come un float, si ottiene un valore che è praticamente zero. Quindi, l'output sarà:
+    // f: 0.000000
+
     printf("bytes: %02x %02x %02x %02x\n", n.bytes[0], n.bytes[1], n.bytes[2], n.bytes[3]);
     n.f = 3.14f;
     printf("After assigning to f:\n");
