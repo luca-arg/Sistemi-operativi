@@ -1,0 +1,15 @@
+```
+gcc pinverti.c -o pinverti
+
+dd if=/dev/urandom of=file_800 bs=1 count=800
+
+cp file_800 originale
+
+cmp file_800 originale  (non darà errore )
+
+./pinverti 4 file_800
+
+la cmp darà errore
+
+rifacendolo non darà errore
+```
