@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Eseguito da: $(pwd)"
+echo "Argomenti ricevuti: $@"
+echo "----------------------"
